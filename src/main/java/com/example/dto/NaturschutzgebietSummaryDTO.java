@@ -5,6 +5,13 @@ public class NaturschutzgebietSummaryDTO {
     private String ort;
     private int anzahlTiere;
 
+    // Konstruktor
+    public NaturschutzgebietSummaryDTO(String name, String ort, int anzahlTiere) {
+        this.name = name;
+        this.ort = ort;
+        this.anzahlTiere = anzahlTiere;
+    }
+
     // Getter und Setter
     public String getName() {
         return name;

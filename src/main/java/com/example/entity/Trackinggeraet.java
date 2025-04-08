@@ -1,12 +1,13 @@
 package com.example.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
-public class Trackinggeraet {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name="trackinggeraet")
+public class Trackinggeraet extends PanacheEntity {
 
     private String seriennummer;
     private String hersteller;
@@ -14,6 +15,9 @@ public class Trackinggeraet {
     @ManyToOne
     @JoinColumn(name = "tier_id")
     private Tier tier;
+
+    @OneToMany(mappedBy = "trackinggeraet")
+    private Set<Wanderung> wanderungen;
 
     public Long getId() {
         return id;

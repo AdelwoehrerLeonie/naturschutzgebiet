@@ -1,7 +1,7 @@
 package com.example.service;
 
 import com.example.dto.GiftpflanzeDTO;
-import com.example.entity.Giftpflanze;
+import com.example.entity.Giftpflanzen;
 import com.example.repository.GiftpflanzeRepository;
 import com.example.websocket.LiveUpdateSocket;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -21,14 +21,14 @@ public class GiftpflanzeService {
     LiveUpdateSocket websocket;
 
     @Transactional
-    public void create(Giftpflanze giftpflanze) {
-        repository.persist(giftpflanze);
+    public void create(Giftpflanzen giftpflanzen) {
+        repository.persist(giftpflanzen);
         // Broadcast der DTO-Daten
         GiftpflanzeDTO dto = new GiftpflanzeDTO();
-        dto.setId(giftpflanze.getId());
-        dto.setName(giftpflanze.getName());
-        dto.setToxizitaetsstufe(giftpflanze.getToxizitaetsstufe());
-        dto.setBeschreibung(giftpflanze.getBeschreibung());
+        dto.setId(giftpflanzen.getId());
+        dto.setName(giftpflanzen.getName());
+        dto.setToxizitaetsstufe(giftpflanzen.getToxizitaetsstufe());
+        dto.setBeschreibung(giftpflanzen.getBeschreibung());
         websocket.broadcast(dto);
     }
 
@@ -44,7 +44,7 @@ public class GiftpflanzeService {
     }
 
 
-    public List<Giftpflanze> findAll() {
+    public List<Giftpflanzen> findAll() {
         return repository.listAll();
     }
 

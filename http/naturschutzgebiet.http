@@ -1,0 +1,19 @@
+### GET request to example server
+GET http://localhost:8080/naturschutzgebiet
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/naturschutzgebiet/1
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/naturschutzgebiet
+Content-Type: application/json
+
+{
+  "name": "HTL Leonding",
+  "ort": "Leonding",
+  "leiterId": 2
+}

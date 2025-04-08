@@ -1,21 +1,31 @@
 package com.example.entity;
 
+import com.example.dto.NaturschutzgebietSummaryDTO;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Naturschutzgebiet {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Naturschutzgebiet extends PanacheEntity {
 
     private String name;
     private String ort;
 
+    @ManyToOne
+    @JoinColumn(name = "leiter_id")  // Verknüpft mit der ID der Leiter-Entität
+    private Leiter leiter;
+
     @OneToMany(mappedBy = "naturschutzgebiet", cascade = CascadeType.ALL)
     private List<Tier> tiere;
 
+    public Leiter getLeiter() {
+        return leiter;
+    }
+
+    public void setLeiter(Leiter leiter) {
+        this.leiter = leiter;
+    }
 
     public Long getId() {
         return id;

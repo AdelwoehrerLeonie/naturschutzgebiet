@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.Giftpflanze;
+import com.example.entity.Giftpflanzen;
 import com.example.service.GiftpflanzeService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -16,12 +16,12 @@ public class GiftpflanzeController {
     GiftpflanzeService service;
 
     @GET
-    public List<Giftpflanze> getAll() {
+    public List<Giftpflanzen> getAll() {
         return service.findAll();
     }
 
     @POST
-    public void create(Giftpflanze giftpflanze) {
-        service.create(giftpflanze);
+    public void create(Giftpflanzen giftpflanzen) {
+        service.create(giftpflanzen);
     }
 }

@@ -1,14 +1,12 @@
 package com.example.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Tier {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Tier extends PanacheEntity {
 
     private String name;
     private String art;

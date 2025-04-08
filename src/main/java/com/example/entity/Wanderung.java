@@ -1,14 +1,13 @@
 package com.example.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 
+import javax.sound.midi.Track;
 import java.time.LocalDate;
 
 @Entity
-public class Wanderung {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Wanderung extends PanacheEntity {
 
     private String region;
     private String datum;
@@ -16,6 +15,11 @@ public class Wanderung {
     @ManyToOne
     @JoinColumn(name = "tier_id")
     private Tier tier;
+
+    @ManyToOne
+    @JoinColumn(name = "trackinggeraet_id", referencedColumnName = "id")
+    private Trackinggeraet trackinggeraet;
+
 
     public Long getId() {
         return id;

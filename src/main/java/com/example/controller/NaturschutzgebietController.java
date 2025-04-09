@@ -11,6 +11,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.util.Collections;
 import java.util.List;
 
 @Path("/naturschutzgebiet")
@@ -21,6 +22,7 @@ public class NaturschutzgebietController {
     NaturschutzgebietService service;
 
     @GET
+    @Path("/{list}")
     public List<NaturschutzgebietSummaryDTO> getAll() {
         return service.findAllSummary();
     }
@@ -38,32 +40,33 @@ public class NaturschutzgebietController {
         service.createNaturschutzgebiet(naturschutzgebiet);
     }
 
-    /*
     @PUT
     @Path("/{id}")
-    public NaturschutzgebietSummaryDTO update(@PathParam("id") Long id, NaturschutzgebietSummaryDTO dto) {
-        return service.update(id, dto);
+    public Response update(@PathParam("id") Long id, NaturschutzgebietDTO dto) {
+        NaturschutzgebietDTO updated = service.update(dto);
+        return Response.ok(updated).build();
     }
-
 
     @DELETE
     @Path("/{id}")
-    public void delete(@PathParam("id") Long id) {
+    public Response delete(@PathParam("id") Long id) {
         service.delete(id);
+        return Response.noContent().build(); // 204 No Content
     }
 
 
     @GET
-    @Path("/")
-    public List<NaturschutzgebietSummaryDTO> getByOrt(@QueryParam("ort") String ort) {
+    public Response getByOrt(@QueryParam("ort") String ort) {
         if (ort != null && !ort.isBlank()) {
-            return service.findByOrt(ort);
+            List<NaturschutzgebietDTO> result = service.findByOrt(ort);
+            return Response.ok(result).build();
         } else {
-            return service.findAll();
+            List<NaturschutzgebietDTO> result = service.getAll();
+            return Response.ok(result).build();
         }
     }
 
-     */
+
 
 
 

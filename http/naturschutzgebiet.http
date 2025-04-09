@@ -1,20 +1,48 @@
-### GET request to example server
+### GET all (optional mit Ort-Filter)
 GET http://localhost:8080/naturschutzgebiet
-Content-Type: application/json
+Accept: application/json
 
 ###
 
+GET http://localhost:8080/naturschutzgebiet?ort=Leonding
+Accept: application/json
+
+
+### GET by ID
 GET http://localhost:8080/naturschutzgebiet/1
-Content-Type: application/json
+Accept: application/json
 
-###
 
+### GET all summaries (Achtung: kollidiert evtl. mit getById!)
+GET http://localhost:8080/naturschutzgebiet/list
+Accept: application/json
+
+
+### POST new Naturschutzgebiet
 POST http://localhost:8080/naturschutzgebiet
 Content-Type: application/json
 
 {
-
   "name": "HTL Leonding",
   "ort": "Leonding",
   "leiterId": 2
 }
+
+###
+
+### PUT update existing (z. B. ID 1)
+PUT http://localhost:8080/naturschutzgebiet/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "HTL Leonding – aktualisiert",
+  "ort": "Leonding",
+  "leiterId": 2
+}
+
+###
+
+### DELETE by ID
+DELETE http://localhost:8080/naturschutzgebiet/1
+Accept: application/json

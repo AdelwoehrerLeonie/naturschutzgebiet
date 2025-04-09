@@ -9,4 +9,10 @@ public record NaturschutzgebietDTO(Long id, String name, String ort, Long leiter
     public static NaturschutzgebietDTO createGetById (Naturschutzgebiet naturschutzgebiet) {
         return new NaturschutzgebietDTO(naturschutzgebiet.id, naturschutzgebiet.name, naturschutzgebiet.ort,naturschutzgebiet.leiter.getId());
     }
+    public static NaturschutzgebietDTO createGetByOrt (Naturschutzgebiet naturschutzgebiet) {
+        return new NaturschutzgebietDTO(naturschutzgebiet.id, naturschutzgebiet.name, naturschutzgebiet.ort,naturschutzgebiet.leiter.getId());
+    }
+    public static NaturschutzgebietDTO createGetAll(Naturschutzgebiet naturschutzgebiet) {
+        return new NaturschutzgebietDTO(naturschutzgebiet.id, naturschutzgebiet.name, naturschutzgebiet.ort,naturschutzgebiet.leiter.getId());
+    }
 }

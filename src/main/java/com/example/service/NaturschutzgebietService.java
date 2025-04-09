@@ -8,6 +8,7 @@ import com.example.entity.Tier;
 import com.example.repository.NaturschutzgebietRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.NotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,19 +39,34 @@ public class NaturschutzgebietService {
         Naturschutzgebiet.persist(myNaturschutzgebiet);
     }
 
-    public NaturschutzgebietSummaryDTO update(Long id, NaturschutzgebietSummaryDTO dto) {
-        return null;
+    public List<NaturschutzgebietDTO> findByOrt(String ort) {
+        return repository.find("ort", ort)
+                .stream()
+                .map(NaturschutzgebietDTO::createGetByOrt)
+                .toList();
     }
-/*
+
+    public List<NaturschutzgebietDTO> getAll() {
+        List<Naturschutzgebiet> naturschutzgebiete = Naturschutzgebiet.listAll();
+        return naturschutzgebiete.stream().map(NaturschutzgebietDTO::createGetAll).toList();
+    }
+
     public void delete(Long id) {
+    boolean deleted = repository.deleteById(id);
+        if (!deleted) {
+            throw new NotFoundException("Naturschutzgebiet mit ID " + id + " nicht gefunden");
+        }
     }
 
-    public List<NaturschutzgebietSummaryDTO> findByOrt(String ort) {
+    public NaturschutzgebietDTO update(NaturschutzgebietDTO naturschutzgebiet) {
+        Naturschutzgebiet toUpdate = Naturschutzgebiet.findById(naturschutzgebiet.id());
+
+        toUpdate.id = naturschutzgebiet.id();
+        toUpdate.name = naturschutzgebiet.name();
+        toUpdate.ort = naturschutzgebiet.ort();
+        toUpdate.leiter.id = naturschutzgebiet.leiterId();
+
+        persist(toUpdate);
+        return naturschutzgebiet;
     }
-
-    public List<NaturschutzgebietSummaryDTO> findAll() {
-
-    }
-
- */
 }

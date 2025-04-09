@@ -4,6 +4,7 @@ import com.example.dto.CreateNaturschutzgebiet;
 import com.example.dto.NaturschutzgebietDTO;
 import com.example.dto.NaturschutzgebietSummaryDTO;
 import com.example.entity.Naturschutzgebiet;
+import com.example.entity.Tier;
 import com.example.repository.NaturschutzgebietRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -22,18 +23,19 @@ public class NaturschutzgebietService {
     public List<NaturschutzgebietSummaryDTO> findAllSummary() {
         return repository.listAll().stream()
                 .map(naturschutzgebiet -> new NaturschutzgebietSummaryDTO(
-                        naturschutzgebiet.getName(),
-                        naturschutzgebiet.getOrt(),
-                        naturschutzgebiet.getLeiter() != null ? naturschutzgebiet.getLeiter().getName() : null, // Hier wird der Name des Leiters zugewiesen
-                        naturschutzgebiet.getTiere().stream()
-                                .map(tier -> tier.getArt()) // Liste von Tierarten
+                        naturschutzgebiet.name,
+                        naturschutzgebiet.ort,
+                        naturschutzgebiet.leiter != null ? naturschutzgebiet.leiter.getName() : null, // Hier wird der Name des Leiters zugewiesen
+                        naturschutzgebiet.tiere.stream()
+                                .map(Tier::getArt) // Liste von Tierarten
                                 .collect(Collectors.toList())
                 ))
                 .collect(Collectors.toList());
     }
 
     public void createNaturschutzgebiet(CreateNaturschutzgebiet naturschutzgebiet) {
-        persist(CreateNaturschutzgebiet.createNaturschutzgebiet(naturschutzgebiet.name(), naturschutzgebiet.ort(), naturschutzgebiet.leiterId()));
+        Naturschutzgebiet myNaturschutzgebiet = CreateNaturschutzgebiet.createNaturschutzgebiet(naturschutzgebiet.name(), naturschutzgebiet.ort(), naturschutzgebiet.leiterId());
+        Naturschutzgebiet.persist(myNaturschutzgebiet);
     }
 
     public NaturschutzgebietSummaryDTO update(Long id, NaturschutzgebietSummaryDTO dto) {

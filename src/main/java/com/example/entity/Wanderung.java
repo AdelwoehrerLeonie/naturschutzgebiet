@@ -11,6 +11,7 @@ public class Wanderung extends PanacheEntity {
 
     private String region;
     private String datum;
+    public Long id;
 
     @ManyToOne
     @JoinColumn(name = "tier_id")

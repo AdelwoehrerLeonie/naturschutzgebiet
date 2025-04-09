@@ -9,6 +9,8 @@ import java.util.Set;
 @Table(name="trackinggeraet")
 public class Trackinggeraet extends PanacheEntity {
 
+    public Long id;
+
     private String seriennummer;
     private String hersteller;
 

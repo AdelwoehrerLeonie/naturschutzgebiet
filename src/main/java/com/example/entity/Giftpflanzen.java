@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 @Entity
 public class Giftpflanzen extends PanacheEntity {
 
+    public Long id;
+
     private String name;
     private int toxizitaetsstufe;
     private String beschreibung;
@@ -27,9 +29,6 @@ public class Giftpflanzen extends PanacheEntity {
         this.beschreibung = beschreibung;
     }
 
-    public String getToxizitaetsstufe() {
-        return String.valueOf(toxizitaetsstufe);
-    }
 
     public void setToxizitaetsstufe(int toxizitaetsstufe) {
         this.toxizitaetsstufe = toxizitaetsstufe;

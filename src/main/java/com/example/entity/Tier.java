@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 public class Tier extends PanacheEntity {
 
+    public Long id;
     private String name;
     private String art;
 

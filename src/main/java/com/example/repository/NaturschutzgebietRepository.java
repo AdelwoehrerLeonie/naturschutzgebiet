@@ -1,9 +1,16 @@
 package com.example.repository;
 
+import com.example.dto.CreateNaturschutzgebiet;
 import com.example.entity.Naturschutzgebiet;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class NaturschutzgebietRepository implements PanacheRepository<Naturschutzgebiet> {
+
+    @Transactional
+    public void createNaturSchutzgebiet(CreateNaturschutzgebiet dto) {
+
+    }
 }

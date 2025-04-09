@@ -13,6 +13,7 @@ POST http://localhost:8080/naturschutzgebiet
 Content-Type: application/json
 
 {
+
   "name": "HTL Leonding",
   "ort": "Leonding",
   "leiterId": 2

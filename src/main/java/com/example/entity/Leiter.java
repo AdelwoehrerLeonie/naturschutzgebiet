@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 @Entity
 public class Leiter extends PanacheEntity {
 
+    public Long id;
+
     private String name;
 
     // Getter und Setter

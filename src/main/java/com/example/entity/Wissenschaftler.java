@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 public class Wissenschaftler extends PanacheEntity {
 
+    public Long id;
     private String name;
     private String forschungsgebiet;
 

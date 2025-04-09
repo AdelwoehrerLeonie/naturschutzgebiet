@@ -28,7 +28,6 @@ Content-Type: application/json
   "leiterId": 2
 }
 
-###
 
 ### PUT update existing (z. B. ID 1)
 PUT http://localhost:8080/naturschutzgebiet/1
@@ -41,7 +40,6 @@ Content-Type: application/json
   "leiterId": 2
 }
 
-###
 
 ### DELETE by ID
 DELETE http://localhost:8080/naturschutzgebiet/1

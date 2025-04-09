@@ -47,12 +47,12 @@ public class Tier extends PanacheEntity {
         return naturschutzgebiet;
     }
 
-    public void setNaturschutzgebiet(Naturschutzgebiet naturschutzgebiet) {
-        this.naturschutzgebiet = naturschutzgebiet;
-    }
-
     public List<Wanderung> getWanderungen() {
         return wanderungen;
+    }
+
+    public void setNaturschutzgebiet(Naturschutzgebiet naturschutzgebiet) {
+        this.naturschutzgebiet = naturschutzgebiet;
     }
 
     public void setWanderungen(List<Wanderung> wanderungen) {

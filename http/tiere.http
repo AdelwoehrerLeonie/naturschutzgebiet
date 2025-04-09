@@ -1,0 +1,46 @@
+### GET all
+GET http://localhost:8080/tiere
+Accept: application/json
+
+###
+
+GET http://localhost:8080/tiere/1
+Accept: application/json
+
+
+### POST new Tier
+POST http://localhost:8080/tiere
+Content-Type: application/json
+
+{
+  "id": 7,
+  "naturschutzgebiet_id": 3,
+  "art": "sfsfssf",
+  "name": "sdsdsd"
+}
+
+
+### PUT update existing
+PUT http://localhost:8080/tiere/1
+Content-Type: application/json
+
+{
+  "id": 7,
+  "naturschutzgebiet_id": 3,
+  "art": "sfsfssf",
+  "name": "sdsdsd"
+}
+
+
+### DELETE by ID
+DELETE http://localhost:8080/tiere/1
+Accept: application/json
+
+### GET with QueryParam
+GET http://localhost:8080/tiere?gebietId=1
+Content-Type: application/json
+
+### GET with PathParam
+GET http://localhost:8080/tiere/naturschutzgebiet/1
+Content-Type: application/json
+

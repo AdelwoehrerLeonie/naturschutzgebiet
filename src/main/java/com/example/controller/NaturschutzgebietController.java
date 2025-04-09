@@ -33,7 +33,6 @@ public class NaturschutzgebietController {
         return NaturschutzgebietDTO.createGetById(Naturschutzgebiet.findById(id));
     }
 
-
     @POST
     @Transactional
     public void create(CreateNaturschutzgebiet naturschutzgebiet) {

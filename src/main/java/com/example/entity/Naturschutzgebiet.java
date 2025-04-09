@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 public class Naturschutzgebiet extends PanacheEntity {
 
-   // @SequenceGenerator(name = "NATURSCHUTZGEBIET_SEQ", sequenceName = "NATURSCHUTZGEBIET_SEQ", allocationSize = 50)
     public Long id;
 
     public String name;
